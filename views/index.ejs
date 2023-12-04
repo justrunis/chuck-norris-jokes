@@ -1,0 +1,55 @@
+<%- include("partials/header.ejs") %>
+<div class="joke-container">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-12">
+                <div class="chuck-norris-joke text-center">
+                    <h3>
+                        <%= locals.joke %>
+                    </h3>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="chuck-norris-image my-4 text-center">
+                    <img src="/images/Chuck-Norris-Jokes.png" alt="Chuck Norris Jokes Picture"
+                        class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form id="form" class="form" action="/category" method="POST">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-md-4">
+                    <label for="pet-select">Choose a category:</label>
+
+                    <select name="value" class="form-select my-2" aria-label="Default select example">
+                        <option value="">--Please choose a category--</option>
+                        <option value="animal">Animal</option>
+                        <option value="career">Career</option>
+                        <option value="celebrity">Celebrity</option>
+                        <option value="dev">Developer</option>
+                        <option value="explicit">Explicit</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="food">Food</option>
+                        <option value="history">History</option>
+                        <option value="money">Money</option>
+                        <option value="movie">Movie</option>
+                        <option value="music">Music</option>
+                        <option value="political">Political</option>
+                        <option value="religion">Religion</option>
+                        <option value="science">Science</option>
+                        <option value="sport">Sport</option>
+                        <option value="travel">Travel</option>
+                    </select>
+                </div>
+
+                <div class="col-md-12 text-center my-3">
+                    <button type="submit" class="btn btn-primary btn-another-joke form-submit">Tell me another
+                        one</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<%- include("partials/footer.ejs") %>
