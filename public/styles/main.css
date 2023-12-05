@@ -18,6 +18,11 @@ header {
     padding: 20px;
 }
 
+.text-strikethrough {
+    text-decoration: line-through;
+    text-decoration-color: red;
+}
+
 .main-content {
     max-width: 800px;
     margin: 0 auto;

@@ -21,10 +21,11 @@
         <form id="form" class="form" action="/category" method="POST">
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-md-4">
-                    <label for="pet-select">Choose a category:</label>
+                    <label class="label label-default">Choose a category:</label>
 
                     <select name="value" class="form-select my-2" aria-label="Default select example">
                         <option value="">--Please choose a category--</option>
+                        <option value="random">Random</option>
                         <option value="animal">Animal</option>
                         <option value="career">Career</option>
                         <option value="celebrity">Celebrity</option>
@@ -52,4 +53,28 @@
         </form>
     </div>
 </div>
+<script>
+    const selectedCategory = "<%= locals.selectedCategory || '' %>";
+    console.log("Selected Category:", selectedCategory);
+
+    // Function to set the selected category in the dropdown
+    function setSelectedCategory() {
+        const categorySelect = document.querySelector('select[name="value"]');
+        console.log("Options:", categorySelect.options);
+
+        // Loop through options and set 'selected' attribute
+        for (let i = 0; i < categorySelect.options.length; i++) {
+            if (categorySelect.options[i].value === selectedCategory) {
+                categorySelect.options[i].selected = true;
+                console.log("Selected Option:", categorySelect.options[i]);
+                break;
+            }
+        }
+    }
+
+    // Call the function when the page is loaded
+    document.addEventListener('DOMContentLoaded', setSelectedCategory);
+</script>
+
+
 <%- include("partials/footer.ejs") %>

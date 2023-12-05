@@ -9,7 +9,7 @@ const API_URL = "https://api.chucknorris.io/jokes";
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-async function getRandomJoke(){
+async function getRandomJoke(res){
   try {
     const result = await axios.get(API_URL + "/random");
     const joke = result.data.value;
@@ -20,20 +20,19 @@ async function getRandomJoke(){
 }
 
 app.get('/', async (req, res) => {
-  getRandomJoke();
+  getRandomJoke(res);
 });
 
 app.post('/category', async (req, res) => {
   const selectedCategory = req.body.value;
-  console.log(selectedCategory);
-  if(selectedCategory === ""){
-    getRandomJoke();
+  if(selectedCategory === "" || selectedCategory === "random"){
+    getRandomJoke(res);
   }
 
   try {
     const result = await axios.get(API_URL + `/random?category=${selectedCategory}`);
     const joke = result.data.value;
-    res.render("index.ejs", {joke});
+    res.render("index.ejs", {joke, selectedCategory});
   } catch (error) {
       res.render("index.ejs", { joke: "Error fetching Chuck Norris joke" });
   }
