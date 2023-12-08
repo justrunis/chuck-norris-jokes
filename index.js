@@ -25,7 +25,8 @@ app.get('/', async (req, res) => {
 
 app.post('/category', async (req, res) => {
   const selectedCategory = req.body.value;
-  if(selectedCategory === "" || selectedCategory === "random"){
+  console.log(selectedCategory);
+  if(selectedCategory === "" || selectedCategory === "random" || selectedCategory === null){
     getRandomJoke(res);
   }
 
